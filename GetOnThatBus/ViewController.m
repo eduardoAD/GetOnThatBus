@@ -35,6 +35,7 @@
         //NSLog(@"JSON error: %@", jsonError);
 
         [self addAnnotations];
+        [self zoomInChicago];
     }];
 }
 
@@ -52,6 +53,22 @@
 
         //NSLog(@"adding: %@",self.busStopAnnotation.title);
     }
+}
+
+- (void)zoomInChicago{
+    CLLocationCoordinate2D zoomChicago;
+    zoomChicago.latitude = 41.8119;
+    zoomChicago.longitude = -87.6873;
+
+    MKCoordinateSpan span;
+    span.latitudeDelta = .4;
+    span.longitudeDelta = .4;
+
+    MKCoordinateRegion region;
+    region.center = zoomChicago;
+    region.span = span;
+    [self.mapView setRegion:region animated:YES];
+    [self.mapView regionThatFits:region];
 }
 
 @end
