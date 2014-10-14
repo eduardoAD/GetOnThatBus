@@ -47,6 +47,7 @@
         self.busStopAnnotation = [[MKPointAnnotation alloc] init];
         self.busStopAnnotation.coordinate = coord;
         self.busStopAnnotation.title = [busStop objectForKey:@"cta_stop_name"];
+        self.busStopAnnotation.subtitle = [busStop objectForKey:@"routes"];
         [self.mapView addAnnotation:self.busStopAnnotation];
 
         //NSLog(@"adding: %@",self.busStopAnnotation.title);
