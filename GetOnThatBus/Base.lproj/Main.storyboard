@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Get on that Bus-->
+        <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -23,46 +23,112 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="i1P-cG-1hW"/>
                                 </connections>
                             </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rPp-wh-XK1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellId" textLabel="R9f-m8-FtL" detailTextLabel="HGs-I4-LbK" style="IBUITableViewCellStyleValue1" id="MGd-Ph-1mj">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MGd-Ph-1mj" id="3Tm-ii-cYM">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R9f-m8-FtL">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HGs-I4-LbK">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="qUa-G0-pJg"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="aDk-Pu-FUs"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ruW-za-CzB" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="1dG-vT-hbo"/>
+                            <constraint firstAttribute="trailing" secondItem="rPp-wh-XK1" secondAttribute="trailing" id="Ely-NR-TOg"/>
                             <constraint firstAttribute="trailing" secondItem="ruW-za-CzB" secondAttribute="trailing" id="P6Z-iF-Dxp"/>
                             <constraint firstItem="ruW-za-CzB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="XYO-vi-dp9"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="rPp-wh-XK1" secondAttribute="bottom" id="o0u-5f-tNL"/>
+                            <constraint firstItem="rPp-wh-XK1" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="oyI-T9-xBX"/>
+                            <constraint firstItem="rPp-wh-XK1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="tpi-Pj-GG4"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ruW-za-CzB" secondAttribute="bottom" id="ytU-iv-rpy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ruW-za-CzB"/>
+                                <exclude reference="rPp-wh-XK1"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Ely-NR-TOg"/>
+                                <exclude reference="oyI-T9-xBX"/>
+                                <exclude reference="tpi-Pj-GG4"/>
                                 <exclude reference="1dG-vT-hbo"/>
                                 <exclude reference="P6Z-iF-Dxp"/>
                                 <exclude reference="XYO-vi-dp9"/>
+                                <exclude reference="o0u-5f-tNL"/>
                                 <exclude reference="ytU-iv-rpy"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="ruW-za-CzB"/>
+                                <include reference="rPp-wh-XK1"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Ely-NR-TOg"/>
+                                <include reference="oyI-T9-xBX"/>
+                                <include reference="tpi-Pj-GG4"/>
                                 <include reference="1dG-vT-hbo"/>
                                 <include reference="P6Z-iF-Dxp"/>
                                 <include reference="XYO-vi-dp9"/>
+                                <include reference="o0u-5f-tNL"/>
                                 <include reference="ytU-iv-rpy"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Get on that Bus" id="oTX-QU-2tE"/>
+                    <navigationItem key="navigationItem" id="oTX-QU-2tE">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="pgh-WT-mm8">
+                            <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Map"/>
+                                <segment title="Table"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentSwitch:" destination="vXZ-lx-hvc" eventType="valueChanged" id="AHS-qv-6YD"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="ruW-za-CzB" id="42N-pC-nZf"/>
+                        <outlet property="segmentedControl" destination="pgh-WT-mm8" id="8dk-Ha-W51"/>
+                        <outlet property="tableView" destination="rPp-wh-XK1" id="jyG-0G-jQg"/>
                         <segue destination="dIJ-9G-x4k" kind="show" identifier="detailStop" id="Qhe-c3-Gc5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036.5" y="-551"/>
+            <point key="canvasLocation" x="1036.5" y="-557"/>
         </scene>
         <!--Detail Stop View Controller-->
         <scene sceneID="kS3-Ur-UXz">

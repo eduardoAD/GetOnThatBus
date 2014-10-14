@@ -11,8 +11,10 @@
 #import "DetailStopViewController.h"
 #import "MyCustomAnnotation.h"
 
-@interface ViewController () <MKMapViewDelegate>
+@interface ViewController () <MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property NSArray *stopArray;
 @property NSDictionary *busStopSelected;
 @property MyCustomAnnotation *busStopAnnotation;
@@ -23,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.segmentedControl.selectedSegmentIndex = 0;
+    self.tableView.hidden = YES;
     [self obtainData];
 }
 
@@ -37,6 +41,7 @@
         //NSLog(@"Connection error: %@", connectionError);
         //NSLog(@"JSON error: %@", jsonError);
 
+        [self.tableView reloadData];
         [self addAnnotations];
         [self zoomInChicago];
     }];
@@ -95,7 +100,6 @@
         pin.image = [UIImage imageNamed:@"pin_red"];
     }
 
-
     return pin;
 }
 
@@ -115,6 +119,39 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     DetailStopViewController *destination = [segue destinationViewController];
     destination.busStop = self.busStopSelected;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.stopArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId" forIndexPath:indexPath];
+
+    NSDictionary *item = [self.stopArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [item objectForKey:@"cta_stop_name"];
+    cell.detailTextLabel.text = [item objectForKey:@"routes"];
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.busStopSelected = [self.stopArray objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"detailStop" sender:tableView];
+}
+
+- (IBAction)segmentSwitch:(UISegmentedControl *)sender {
+    UISegmentedControl *segmentedControl = sender;
+    NSInteger selectedIndex = segmentedControl.selectedSegmentIndex;
+    if (selectedIndex == 0) {
+        //map
+        self.mapView.hidden = NO;
+        self.tableView.hidden = YES;
+    }else{
+        //table
+        self.mapView.hidden = YES;
+        self.tableView.hidden = NO;
+    }
 }
 
 @end
