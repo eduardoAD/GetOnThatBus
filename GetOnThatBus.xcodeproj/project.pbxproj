@@ -16,6 +16,7 @@
 		E40FFDD119ED9D9F0005BB31 /* GetOnThatBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E40FFDD019ED9D9F0005BB31 /* GetOnThatBusTests.m */; };
 		E40FFDDB19ED9EC20005BB31 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40FFDDA19ED9EC20005BB31 /* MapKit.framework */; };
 		E40FFDDE19EDB17F0005BB31 /* DetailStopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E40FFDDD19EDB17F0005BB31 /* DetailStopViewController.m */; };
+		E40FFDE419EDCDDD0005BB31 /* MyCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E40FFDE319EDCDDD0005BB31 /* MyCustomAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		E40FFDDA19ED9EC20005BB31 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E40FFDDC19EDB17F0005BB31 /* DetailStopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailStopViewController.h; sourceTree = "<group>"; };
 		E40FFDDD19EDB17F0005BB31 /* DetailStopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailStopViewController.m; sourceTree = "<group>"; };
+		E40FFDE219EDCDDD0005BB31 /* MyCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomAnnotation.h; sourceTree = "<group>"; };
+		E40FFDE319EDCDDD0005BB31 /* MyCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 				E40FFDB419ED9D9F0005BB31 /* Supporting Files */,
 				E40FFDDC19EDB17F0005BB31 /* DetailStopViewController.h */,
 				E40FFDDD19EDB17F0005BB31 /* DetailStopViewController.m */,
+				E40FFDE219EDCDDD0005BB31 /* MyCustomAnnotation.h */,
+				E40FFDE319EDCDDD0005BB31 /* MyCustomAnnotation.m */,
 			);
 			path = GetOnThatBus;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				E40FFDDE19EDB17F0005BB31 /* DetailStopViewController.m in Sources */,
 				E40FFDBA19ED9D9F0005BB31 /* AppDelegate.m in Sources */,
 				E40FFDB719ED9D9F0005BB31 /* main.m in Sources */,
+				E40FFDE419EDCDDD0005BB31 /* MyCustomAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

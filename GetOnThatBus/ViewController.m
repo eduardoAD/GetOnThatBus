@@ -9,12 +9,13 @@
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
 #import "DetailStopViewController.h"
+#import "MyCustomAnnotation.h"
 
 @interface ViewController () <MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property NSArray *stopArray;
 @property NSDictionary *busStopSelected;
-@property MKPointAnnotation *busStopAnnotation;
+@property MyCustomAnnotation *busStopAnnotation;
 @end
 
 @implementation ViewController
@@ -47,13 +48,21 @@
         coord.latitude = [[busStop objectForKey:@"latitude"] doubleValue];
         coord.longitude = [[busStop objectForKey:@"longitude"] doubleValue];
 
-        self.busStopAnnotation = [[MKPointAnnotation alloc] init];
-        self.busStopAnnotation.coordinate = coord;
-        self.busStopAnnotation.title = [busStop objectForKey:@"cta_stop_name"];
+        self.busStopAnnotation = [[MyCustomAnnotation alloc] initWithTitle:[busStop objectForKey:@"cta_stop_name"] Location:coord];
         self.busStopAnnotation.subtitle = [busStop objectForKey:@"routes"];
-        [self.mapView addAnnotation:self.busStopAnnotation];
 
-        //NSLog(@"adding: %@",self.busStopAnnotation.title);
+        NSString *inter = [busStop objectForKey:@"inter_modal"];
+        if (inter != nil) {
+            if ([inter isEqualToString:@"Metra"]) {
+                self.busStopAnnotation.intermodal = @"Metra";
+            }else{
+                self.busStopAnnotation.intermodal = @"Pace";
+            }
+        }else{
+            self.busStopAnnotation.intermodal = @"";
+        }
+
+        [self.mapView addAnnotation:self.busStopAnnotation];
     }
 }
 
@@ -74,9 +83,18 @@
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
-    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinID"];
+    MyCustomAnnotation *myAnnotation = (MyCustomAnnotation *)annotation;
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:myAnnotation reuseIdentifier:@"MyPinID"];
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    if ([myAnnotation.intermodal isEqualToString:@"Metra"]) {
+        pin.image = [UIImage imageNamed:@"pin_blue"];
+    }else if ([myAnnotation.intermodal isEqualToString:@"Pace"]){
+        pin.image = [UIImage imageNamed:@"pin_yellow"];
+    }else{
+        pin.image = [UIImage imageNamed:@"pin_red"];
+    }
+
 
     return pin;
 }
