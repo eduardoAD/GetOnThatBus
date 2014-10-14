@@ -105,7 +105,7 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
     NSString *annotationTitle = view.annotation.title;
-    NSLog(@"callout tapped in: %@",annotationTitle);
+    //NSLog(@"callout tapped in: %@",annotationTitle);
     for (NSDictionary *busStop in self.stopArray) {
         NSString *busStopName = [busStop objectForKey:@"cta_stop_name"];
         if ([busStopName isEqualToString:annotationTitle]) {
