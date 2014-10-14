@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import <MapKit/MapKit.h>
+#import "DetailStopViewController.h"
 
 @interface ViewController () <MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property NSArray *stopArray;
+@property NSDictionary *busStopSelected;
 @property MKPointAnnotation *busStopAnnotation;
 @end
 
@@ -69,6 +71,32 @@
     region.span = span;
     [self.mapView setRegion:region animated:YES];
     [self.mapView regionThatFits:region];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"MyPinID"];
+    pin.canShowCallout = YES;
+    pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+    return pin;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    NSString *annotationTitle = view.annotation.title;
+    NSLog(@"callout tapped in: %@",annotationTitle);
+    for (NSDictionary *busStop in self.stopArray) {
+        NSString *busStopName = [busStop objectForKey:@"cta_stop_name"];
+        if ([busStopName isEqualToString:annotationTitle]) {
+            self.busStopSelected = busStop;
+        }
+    }
+
+    [self performSegueWithIdentifier:@"detailStop" sender:view];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    DetailStopViewController *destination = [segue destinationViewController];
+    destination.busStop = self.busStopSelected;
 }
 
 @end
