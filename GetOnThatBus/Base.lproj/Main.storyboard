@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8Gc-jI-GK4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -78,14 +79,14 @@
                                 <exclude reference="rPp-wh-XK1"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Ely-NR-TOg"/>
-                                <exclude reference="oyI-T9-xBX"/>
-                                <exclude reference="tpi-Pj-GG4"/>
+                                <exclude reference="o0u-5f-tNL"/>
+                                <exclude reference="ytU-iv-rpy"/>
                                 <exclude reference="1dG-vT-hbo"/>
                                 <exclude reference="P6Z-iF-Dxp"/>
                                 <exclude reference="XYO-vi-dp9"/>
-                                <exclude reference="o0u-5f-tNL"/>
-                                <exclude reference="ytU-iv-rpy"/>
+                                <exclude reference="Ely-NR-TOg"/>
+                                <exclude reference="oyI-T9-xBX"/>
+                                <exclude reference="tpi-Pj-GG4"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -94,14 +95,14 @@
                                 <include reference="rPp-wh-XK1"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Ely-NR-TOg"/>
-                                <include reference="oyI-T9-xBX"/>
-                                <include reference="tpi-Pj-GG4"/>
+                                <include reference="o0u-5f-tNL"/>
+                                <include reference="ytU-iv-rpy"/>
                                 <include reference="1dG-vT-hbo"/>
                                 <include reference="P6Z-iF-Dxp"/>
                                 <include reference="XYO-vi-dp9"/>
-                                <include reference="o0u-5f-tNL"/>
-                                <include reference="ytU-iv-rpy"/>
+                                <include reference="Ely-NR-TOg"/>
+                                <include reference="oyI-T9-xBX"/>
+                                <include reference="tpi-Pj-GG4"/>
                             </mask>
                         </variation>
                     </view>
@@ -139,6 +140,7 @@
                         <viewControllerLayoutGuide type="bottom" id="zZq-Jo-ujz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xTi-BL-nxp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcG-5p-ye5">
